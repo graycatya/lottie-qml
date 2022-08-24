@@ -1,0 +1,17 @@
+MetaInfo {
+    Type {
+        name: "LottieCompat.Qml.LottieAnimation"
+        icon: "images/LottieAnimation.png"
+
+        ItemLibraryEntry {
+            name: "LottieAnimation"
+            category: "LottieCompat - Qml"
+            libraryIcon: "images/LottieAnimation.png"
+            version: "1.0"
+            requiredImport: "LottieCompat"
+            Property { name: "width"; type: "int"; value: 120 }
+            Property { name: "height"; type: "int"; value: 80 }
+        }
+    }
+}
+

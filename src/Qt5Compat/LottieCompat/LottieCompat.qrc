@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/LottieCompat">
+        <file>qmldir</file>
+        <file>Qml/LottieAnimation.qml</file>
+        <file>Qml/private/HtmlImg.qml</file>
+        <file>Qml/private/lottie_shim.js</file>
+        <file>Qml/3rdparty/lottie.min.js</file>
+    </qresource>
+</RCC>
