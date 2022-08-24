@@ -141,7 +141,6 @@ function initialize(canvas) {
     // Don't check exception here as we don't want to fall back to minified
     // if you did a typo while developing.
     if (lottieJs.status === 2) {
-        console.log("lottieJs.status: " + lottieJs.status)
         url = "../3rdparty/lottie.min.js";
         lottieJs = Qt.include(url);
     }
@@ -154,8 +153,7 @@ function initialize(canvas) {
         console.warn("Failed to load", url, lottieJs.statusText);
         throw new Error("Failed to load lottie.min.js");
     }
-
-    console.log(d.log, "Using", url);
+    console.log(d.log, "Using lottieJs.status " + lottieJs.status + ": ", url);
 
     return window.lottie;
 }
