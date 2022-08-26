@@ -3,7 +3,6 @@
 #include <QQmlContext>
 #include <QQmlEngine>
 #include <QQuickView>
-#include <QtQuickControls2/qquickstyle.h>
 #include <QGuiApplication>
 
 int main(int argc, char *argv[])

@@ -256,6 +256,7 @@ Window {
                 var newModel = sourceCombo.model;
 
                 drop.urls.forEach(function (url) {
+                    console.log("url: " + sourceCombo.itemFromUrl(url).value)
                     newModel.push(sourceCombo.itemFromUrl(url));
                 });
 
