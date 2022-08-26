@@ -5,6 +5,6 @@
         <file>Qml/private/HtmlImg.qml</file>
         <file>Qml/private/lottie_shim.js</file>
         <file>Qml/3rdparty/lottie.min.js</file>
-        <file>Qml/3rdparty/lottie.js</file>
+        <!-- <file>Qml/3rdparty/lottie.js</file> -->
     </qresource>
 </RCC>
