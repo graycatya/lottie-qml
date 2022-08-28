@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2018 Kai Uwe Broulik <kde@broulik.de>
  *
  * This library is free software; you can redistribute it and/or
@@ -153,7 +153,8 @@ function initialize(canvas) {
         console.warn("Failed to load", url, lottieJs.statusText);
         throw new Error("Failed to load lottie.min.js");
     }
-    console.log(d.log, "Using lottieJs.status " + lottieJs.status + ": ", url);
+
+    console.log(d.log, "Using", url);
 
     return window.lottie;
 }

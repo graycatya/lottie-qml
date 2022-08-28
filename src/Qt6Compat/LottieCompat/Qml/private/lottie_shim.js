@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2018 Kai Uwe Broulik <kde@broulik.de>
  *
  * This library is free software; you can redistribute it and/or
@@ -32,7 +32,7 @@ var timers = {}; // we need arbitrary index, hence no Array
 function setInterval(callback, interval) {
     ++highestInterval;
 
-    var timer = Qt.createQmlObject("import QtQuick 2.0; Timer {}", canvasItem, "setInterval");
+    var timer = Qt.createQmlObject("import QtQuick; Timer {}", canvasItem, "setInterval");
     timer.interval = interval;
     timer.repeat = true;
     timer.triggered.connect(callback);
@@ -63,7 +63,7 @@ function setTimeout(callback, interval) {
     }
 
     // TODO can we re-use the timers here or is there a Qt.callLater(delay)?
-    var timer = Qt.createQmlObject("import QtQuick 2.0; Timer {}", canvasItem, "setTimeout");
+    var timer = Qt.createQmlObject("import QtQuick; Timer {}", canvasItem, "setTimeout");
     timer.interval = interval;
     timer.triggered.connect(function () {
         callback();
@@ -141,7 +141,7 @@ function initialize(canvas) {
     // Don't check exception here as we don't want to fall back to minified
     // if you did a typo while developing.
     if (lottieJs.status === 2) {
-        url = "qrc://LottieCompat/Qml/3rdparty/lottie.min.js";
+        url = "../3rdparty/lottie.min.js";
         lottieJs = Qt.include(url);
     }
 

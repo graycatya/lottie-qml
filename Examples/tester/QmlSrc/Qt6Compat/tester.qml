@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2018 Kai Uwe Broulik <kde@broulik.de>
  *
  * This library is free software; you can redistribute it and/or
@@ -43,11 +43,11 @@ Window {
         onActivated: sourceCombo.incrementCurrentIndex()
     }
     Shortcut {
-        sequence: "Ctrl+Shift+Tab" // FIXME StandardKey.PreviousChild
+        sequences: ["Ctrl+Shift+Tab"] // FIXME StandardKey.PreviousChild
         onActivated: sourceCombo.decrementCurrentIndex()
     }
     Shortcut {
-        sequence: StandardKey.FullScreen
+        sequences: [StandardKey.FullScreen]
         onActivated: fullCheck.checked = !fullCheck.checked
     }
 

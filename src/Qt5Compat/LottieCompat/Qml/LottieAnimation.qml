@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2018 Kai Uwe Broulik <kde@broulik.de>
  *
  * This library is free software; you can redistribute it and/or
