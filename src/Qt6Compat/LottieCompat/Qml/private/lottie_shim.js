@@ -136,14 +136,23 @@ function initialize(canvas) {
     };
 
     // First check whether there is a non-minified version for debugging purposes
-    var url = "../3rdparty/lottie.js";
-    var lottieJs = Qt.include(url);
+    var url = "";
+    if(typeof(lottieQmlDebug) === "undefined")
+    {
+        url = "../3rdparty/lottie.min.js";
+    } else {
+        if(lottieQmlDebug)
+        {
+            url = "../3rdparty/lottie.js";
+        } else {
+            url = "../3rdparty/lottie.min.js";
+        }
+    }
+
     // Don't check exception here as we don't want to fall back to minified
     // if you did a typo while developing.
-    if (lottieJs.status === 2) {
-        url = "../3rdparty/lottie.min.js";
-        lottieJs = Qt.include(url);
-    }
+
+    var lottieJs = Qt.include(url);
 
     // FIXME Qt docs mention "result.EXCEPTION" as "3" but how to use that enum value here?
     if (lottieJs.status === 3) {

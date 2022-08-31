@@ -1,9 +1,10 @@
-#include <QQmlApplicationEngine>
+﻿#include <QQmlApplicationEngine>
 #include <QDebug>
 #include <QQmlContext>
 #include <QQmlEngine>
 #include <QQuickView>
 #include <QGuiApplication>
+#include "LottieQml.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -12,7 +13,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
     QCoreApplication::setOrganizationName("CatGrayYa");
     QQmlApplicationEngine engine;
-    engine.addImportPath(LottieCompatImportPath);
+    LottieQml::InitCompat(engine);
     const QUrl mainQmlUrl(QStringLiteral("qrc:///tester.qml"));
     const QMetaObject::Connection connection = QObject::connect(
         &engine,

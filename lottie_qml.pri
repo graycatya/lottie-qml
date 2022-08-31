@@ -35,3 +35,8 @@ lessThan(QT_MAJOR_VERSION, 6) {
 } else {
     include($$PWD/src/Qt6Compat/imports.pri)
 }
+
+HEADERS += \
+    $$PWD/src/LottieQml.hpp
+
+INCLUDEPATH += $$PWD/src
