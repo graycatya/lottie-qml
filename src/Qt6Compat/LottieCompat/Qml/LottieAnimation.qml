@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2018 Kai Uwe Broulik <kde@broulik.de>
  *
  * This library is free software; you can redistribute it and/or
@@ -20,7 +20,7 @@
 
 import QtQuick 
 
-import "private/lottie_shim.js" as Lottie
+import "private/lottie_shim.js" as Lottie;
 
 /**
  * LottieAnimation

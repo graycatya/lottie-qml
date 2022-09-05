@@ -1,4 +1,4 @@
-﻿#include <QQmlApplicationEngine>
+#include <QQmlApplicationEngine>
 #include <QDebug>
 #include <QQmlContext>
 #include <QQmlEngine>

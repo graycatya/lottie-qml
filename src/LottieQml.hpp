@@ -1,4 +1,4 @@
-﻿#include <QQmlApplicationEngine>
+#include <QQmlApplicationEngine>
 #include <QQmlContext>
 
 namespace LottieQml {
