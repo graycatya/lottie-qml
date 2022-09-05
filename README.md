@@ -111,5 +111,140 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
-### Replace the new repository
+### Lottie-QML modified Lottie-Web part of the source code
 
+1. Modify the beginning of the source code
+
+before modification
+
+```javascript
+(typeof navigator !== "undefined") && (function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.lottie = factory());
+})(this, (function () { 'use strict';
+```
+
+after modification
+
+```javascript
+(typeof navigator !== "undefined") && (function(root, factory) {
+  if (typeof define === "function" && define.amd) {
+      define(function() {
+          return factory(root);
+      });
+  } else if (typeof module === "object" && module.exports) {
+      module.exports = factory(root);
+  } else {
+      root.lottie = factory(root);
+      root.bodymovin = root.lottie;
+  }
+}((window || {}), function(window) {
+```
+
+2. Enable addColorStop transparency
+
+before modification
+
+```javascript
+  CVShapeElement.prototype.renderGradientFill = function (styleData, itemData, groupTransform) {
+    var styleElem = itemData.style;
+    var grd;
+
+    if (!styleElem.grd || itemData.g._mdf || itemData.s._mdf || itemData.e._mdf || styleData.t !== 1 && (itemData.h._mdf || itemData.a._mdf)) {
+      var ctx = this.globalData.canvasContext;
+      var pt1 = itemData.s.v;
+      var pt2 = itemData.e.v;
+
+      if (styleData.t === 1) {
+        grd = ctx.createLinearGradient(pt1[0], pt1[1], pt2[0], pt2[1]);
+      } else {
+        var rad = Math.sqrt(Math.pow(pt1[0] - pt2[0], 2) + Math.pow(pt1[1] - pt2[1], 2));
+        var ang = Math.atan2(pt2[1] - pt1[1], pt2[0] - pt1[0]);
+        var percent = itemData.h.v;
+
+        if (percent >= 1) {
+          percent = 0.99;
+        } else if (percent <= -1) {
+          percent = -0.99;
+        }
+
+        var dist = rad * percent;
+        var x = Math.cos(ang + itemData.a.v) * dist + pt1[0];
+        var y = Math.sin(ang + itemData.a.v) * dist + pt1[1];
+        grd = ctx.createRadialGradient(x, y, 0, pt1[0], pt1[1], rad);
+      }
+
+      var i;
+      var len = styleData.g.p;
+      var cValues = itemData.g.c;
+      var opacity = 1;
+
+      for (i = 0; i < len; i += 1) {
+        if (itemData.g._hasOpacity && itemData.g._collapsable) {
+          opacity = itemData.g.o[i * 2 + 1];
+        }
+
+        grd.addColorStop(cValues[i * 4] / 100, 'rgba(' + cValues[i * 4 + 1] + ',' + cValues[i * 4 + 2] + ',' + cValues[i * 4 + 3] + ',' + opacity + ')');
+      }
+
+      styleElem.grd = grd;
+    }
+
+    styleElem.coOp = itemData.o.v * groupTransform.opacity;
+  };
+```
+
+after modification
+
+```javascript
+  CVShapeElement.prototype.renderGradientFill = function (styleData, itemData, groupTransform) {
+    var styleElem = itemData.style;
+    var grd;
+
+    if (!styleElem.grd || itemData.g._mdf || itemData.s._mdf || itemData.e._mdf || styleData.t !== 1 && (itemData.h._mdf || itemData.a._mdf)) {
+      var ctx = this.globalData.canvasContext;
+      var pt1 = itemData.s.v;
+      var pt2 = itemData.e.v;
+
+      if (styleData.t === 1) {
+        grd = ctx.createLinearGradient(pt1[0], pt1[1], pt2[0], pt2[1]);
+      } else {
+        var rad = Math.sqrt(Math.pow(pt1[0] - pt2[0], 2) + Math.pow(pt1[1] - pt2[1], 2));
+        var ang = Math.atan2(pt2[1] - pt1[1], pt2[0] - pt1[0]);
+        var percent = itemData.h.v;
+
+        if (percent >= 1) {
+          percent = 0.99;
+        } else if (percent <= -1) {
+          percent = -0.99;
+        }
+
+        var dist = rad * percent;
+        var x = Math.cos(ang + itemData.a.v) * dist + pt1[0];
+        var y = Math.sin(ang + itemData.a.v) * dist + pt1[1];
+        grd = ctx.createRadialGradient(x, y, 0, pt1[0], pt1[1], rad);
+      }
+
+      var i;
+      var len = styleData.g.p;
+      var cValues = itemData.g.c;
+      var opacity = 1;
+
+      for (i = 0; i < len; i += 1) {
+        if(itemData.g.o[i * 2 + 1] !== null)
+        {
+          opacity = itemData.g.o[i * 2 + 1];
+        }
+        if (itemData.g._hasOpacity && itemData.g._collapsable) {
+          opacity = itemData.g.o[i * 2 + 1];
+        }
+        grd.addColorStop(cValues[i * 4] / 100, 'rgba(' + cValues[i * 4 + 1] + ',' + cValues[i * 4 + 2] + ',' + cValues[i * 4 + 3] + ',' + opacity + ')');
+      }
+
+      styleElem.grd = grd;
+    }
+
+    styleElem.coOp = itemData.o.v * groupTransform.opacity;
+  };
+```
