@@ -1,0 +1,78 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "LottieQml",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "LottieQml::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-LottieQml-Debug-d8ca10d481dfa97efa46.json",
+					"name" : "LottieQml",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "LottieQml_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-LottieQml_autogen-Debug-df2894dd97089e523cb2.json",
+					"name" : "LottieQml_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "LottieQml_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-LottieQml_autogen_timestamp_deps-Debug-a2d683c103402bfb690f.json",
+					"name" : "LottieQml_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/catgray/catgray/code/CatLearnQt/modules/QCatGrayQuick/3rdparty/lottie-qml/src/build-LottieQml-Desktop_Qt_6_5_2_GCC_64bit-Debug",
+		"source" : "/home/catgray/catgray/code/CatLearnQt/modules/QCatGrayQuick/3rdparty/lottie-qml/src/LottieQml"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

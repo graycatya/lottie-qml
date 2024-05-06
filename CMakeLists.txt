@@ -1,53 +1,50 @@
-﻿cmake_minimum_required(VERSION 3.14)
+﻿cmake_minimum_required(VERSION 3.9)
 
-project(LottieQml LANGUAGES CXX)
-
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+project(LottieQmlPjects LANGUAGES CXX)
 
 
-message(STATUS ${CMAKE_CURRENT_SOURCE_DIR})
-
-set(STATIC_NAME ${PROJECT_NAME}_static)
-
-find_package(QT NAMES Qt5 Qt6 COMPONENTS Core Gui Quick REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Gui Quick REQUIRED)
-
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}")
-
-include(LottieQml)
-
-find_lottleqml_pack(LottieCompatRes "${CMAKE_CURRENT_SOURCE_DIR}")
-if(${QT_VERSION_MAJOR} STREQUAL "5")
-    message("Littie res: " ${LottieCompatRes})
-    qt5_add_resources(PROJECT_QRC_FILES ${LottieCompatRes})
-else()
-    message("Littie res: " ${LottieCompatRes})
-    qt_add_resources(PROJECT_QRC_FILES ${LottieCompatRes})
-endif()
+message(STATUS "------------------------------------------------------------" )
+message(STATUS "[${PROJECT_NAME}] Configuration summary."                     )
+message(STATUS "------------------------------------------------------------ ")
+message(STATUS " System configuration:"                                       )
+message(STATUS " .. Processor type .............. = ${CMAKE_SYSTEM_PROCESSOR}")
+message(STATUS " .. CMake executable ............ = ${CMAKE_COMMAND}"         )
+message(STATUS " .. CMake version ............... = ${CMAKE_VERSION}"         )
+message(STATUS " .. System name ................. = ${CMAKE_SYSTEM}"          )
+message(STATUS " .. C++ compiler ................ = ${CMAKE_CXX_COMPILER}"    )
+message(STATUS " .. C compiler .................. = ${CMAKE_C_COMPILER}"      )
+message(STATUS " .. size(void*) ................. = ${CMAKE_SIZEOF_VOID_P}"   )
+message(STATUS " .. cmake current source ................. = ${CMAKE_CURRENT_SOURCE_DIR}")
+message(STATUS " .. cmake system name ................. = ${CMAKE_SYSTEM_NAME}")
 
 
-add_library(${STATIC_NAME} STATIC ./src/LottieQml.hpp
-                                    ${PROJECT_QRC_FILES})
+set(3RDPARTY
 
-add_library(${PROJECT_NAME} SHARED ./src/LottieQml.hpp
-                                    ${PROJECT_QRC_FILES})
+)
 
-SET_TARGET_PROPERTIES(${STATIC_NAME} PROPERTIES OUTPUT_NAME ${PROJECT_NAME})
-SET_TARGET_PROPERTIES(${PROJECT_NAME} PROPERTIES VERSION 1.0.0 SOVERSION 1)
-SET_TARGET_PROPERTIES(${STATIC_NAME} PROPERTIES CLEAN_DIRECT_OUTPUT 1)
+set(MODULES
+    LottieQml
+)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE Qt${QT_VERSION_MAJOR}::Core)
-target_link_libraries(${PROJECT_NAME} PRIVATE Qt${QT_VERSION_MAJOR}::Gui)
-target_link_libraries(${PROJECT_NAME} PRIVATE Qt${QT_VERSION_MAJOR}::Quick)
+set(EXAMPLES
+    LottieQmlTester
+)
 
+foreach(3rdparty_module ${3RDPARTY})
+    add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/${3rdparty_module})
+endforeach(3rdparty_module ${3RDPARTY})
 
-target_link_libraries(${STATIC_NAME} PRIVATE Qt${QT_VERSION_MAJOR}::Core)
-target_link_libraries(${STATIC_NAME} PRIVATE Qt${QT_VERSION_MAJOR}::Gui)
-target_link_libraries(${STATIC_NAME} PRIVATE Qt${QT_VERSION_MAJOR}::Quick)
+foreach(module ${MODULES})
+    add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/${module})
+endforeach(module ${MODULES})
 
-target_compile_definitions(${PROJECT_NAME} PRIVATE LOTTIEQML_LIBRARY)
+foreach(example ${EXAMPLES})
+    add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/examples/${example})
+endforeach(example ${EXAMPLES})
+
+message(STATUS " .. qt version ................. = ${CAT_QT_CURRENT_VERSION}")
+message(STATUS " .. qml import path ................. = ${QML_IMPORT_PATH}")
+message(STATUS " .. qml2 import path ................. = ${QML2_IMPORT_PATH}")
+message(STATUS " .. qml designer import path ................. = ${QML_DESIGNER_IMPORT_PATH}")
+
+message(STATUS "------------------------------------------------------------ ")

@@ -48,22 +48,6 @@ You can also add multiple files and switch between them using the ComboBox in th
 ## How to use Core Library
 
 
-### qmake
-
-* Usage of pri file
-
-Use the core library only need to import, the'.pri' file under the module folder
-
-The resources that GrayCatYa needs to use will be quoted in the form of qrc resources. Pay attention to the path name of the resource, and do not re-path with the new qrc resource file.
-
-After importing pri, no additional compilation is required to generate dll or plug-in
-
->Steps
-
-```
-include(lottie-qml/lottie_qml.pri)
-```
-
 ### cmake
 
 1. Copy lottie_qml to your project directory, and note that it is at the same level as the module file
