@@ -1,5 +1,0 @@
-/home/catgray/catgray/code/CatLearnQt/modules/QCatGrayQuick/3rdparty/lottie-qml/src/build-LottieQml-Desktop_Qt_6_5_2_GCC_64bit-Debug/CMakeFiles/LottieQml.dir
-/home/catgray/catgray/code/CatLearnQt/modules/QCatGrayQuick/3rdparty/lottie-qml/src/build-LottieQml-Desktop_Qt_6_5_2_GCC_64bit-Debug/CMakeFiles/edit_cache.dir
-/home/catgray/catgray/code/CatLearnQt/modules/QCatGrayQuick/3rdparty/lottie-qml/src/build-LottieQml-Desktop_Qt_6_5_2_GCC_64bit-Debug/CMakeFiles/rebuild_cache.dir
-/home/catgray/catgray/code/CatLearnQt/modules/QCatGrayQuick/3rdparty/lottie-qml/src/build-LottieQml-Desktop_Qt_6_5_2_GCC_64bit-Debug/CMakeFiles/LottieQml_autogen_timestamp_deps.dir
-/home/catgray/catgray/code/CatLearnQt/modules/QCatGrayQuick/3rdparty/lottie-qml/src/build-LottieQml-Desktop_Qt_6_5_2_GCC_64bit-Debug/CMakeFiles/LottieQml_autogen.dir
