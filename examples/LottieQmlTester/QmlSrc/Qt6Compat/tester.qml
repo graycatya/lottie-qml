@@ -22,7 +22,7 @@ import QtQuick
 import QtQuick.Window 
 import QtQuick.Controls 
 import QtQuick.Layouts 
-import Qt.labs.settings 
+import Qt.labs.settings
 import LottieCompat as Lottie
 
 Window {
@@ -242,13 +242,13 @@ Window {
 
         DropArea {
             anchors.fill: parent
-            onEntered: {
+            onEntered: function entered(drag) {
                 if (!drag.hasUrls) {
                     drag.accepted = false;
                 }
             }
 
-            onDropped: {
+            onDropped: function dropped(drop) {
                 if (!drop.hasUrls) {
                     return;
                 }

@@ -17,7 +17,7 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Gui Quick)
 
 set(LottieQmlPath ${CMAKE_CURRENT_SOURCE_DIR}/Qt${QT_VERSION_MAJOR}Compat)
 if (CMAKE_BUILD_TYPE MATCHES "Release")
-    set(LottieQmlImport "qrc:/LottieCompat" )
+    set(LottieQmlImport "qrc:/lottiecompat_plugins" )
 else()
     set(LottieQmlImport "file:///${LottieQmlPath}")
 endif()

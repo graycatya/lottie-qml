@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/LottieCompat">
+    <qresource prefix="/lottiecompat_plugins/LottieCompat">
         <file>qmldir</file>
         <file>Qml/LottieAnimation.qml</file>
         <file>Qml/private/HtmlImg.qml</file>

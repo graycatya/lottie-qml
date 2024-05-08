@@ -186,6 +186,13 @@ Item {
         canvas.requestPaint();
     }
 
+    LoggingCategory {
+        id: lottieAnimationlog
+        name: "com.lottieAnimation"
+        // TODO needs bump to Qt 5.12, is it worth it?
+        //defaultLogLevel: LoggingCategory.Warning
+    }
+
     // Private API
     QtObject {
         id: d
@@ -201,12 +208,6 @@ Item {
         // When recreating the animation when changing properties, jump to this frame
         // to provide a seamless experience
         property real pendingRawFrame: -1
-
-        readonly property LoggingCategory log: LoggingCategory {
-            name: "LottieCompat"
-            // TODO needs bump to Qt 5.12, is it worth it?
-            //defaultLogLevel: LoggingCategory.Info
-        }
 
         onAnimationDataChanged: {
             destroyAnimation();
@@ -274,8 +275,8 @@ Item {
                 return;
             }
 
-            console.log(d.log, "Initializing Lottie Animation");
-            var lottie = Lottie.initialize(canvas, d.log);
+            console.log(d.lottieAnimationlog, "Initializing Lottie Animation");
+            var lottie = Lottie.initialize(canvas, d.lottieAnimationlog);
 
             var aspectRatio = "none";
 
@@ -339,7 +340,7 @@ Item {
         }
 
         function destroyAndRecreate() {
-            console.log(d.log, "destroy and recreate");
+            console.log(d.lottieAnimationlog, "destroy and recreate");
             if (animationItem) {
                 d.pendingRawFrame = animationItem.currentRawFrame;
             }
@@ -399,7 +400,7 @@ Item {
     onSourceChanged: {
         // is already JS object, use verbatim
         if (typeof source === "object") { // TODO what about QUrl, I think it is treated as {} here
-            console.log(d.log, "Using source verbatim as it is an object");
+            console.log(d.lottieAnimationlog, "Using source verbatim as it is an object");
             d.animationData = source;
             return;
         }
@@ -407,7 +408,7 @@ Item {
         var sourceString = source.toString();
 
         if (sourceString.indexOf("{") === 0) { // startsWith("{"), assume JSON
-            console.log(d.log, "Using source as JSON");
+            console.log(d.lottieAnimationlog, "Using source as JSON");
             d.setAnimationDataJson(sourceString);
             return;
         }

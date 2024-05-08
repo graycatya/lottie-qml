@@ -8,6 +8,7 @@
 
 int main(int argc, char *argv[])
 {
+    qputenv("QML_XHR_ALLOW_FILE_READ", "1");
     //QGuiApplication
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv);
